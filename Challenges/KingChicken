@@ -1,0 +1,7 @@
+//if even, return previous odd
+//if odd, return the number
+//34 chars
+
+int KingChicken(int n) {
+    return n - 1 | 1;
+}
