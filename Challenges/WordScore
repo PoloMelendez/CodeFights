@@ -1,0 +1,11 @@
+//reverse challenge
+//sum the chars in a string, not by ascii
+//a = 1, b = 2, c = 3, etc
+//45 chars
+//abuses compiler taking last assignment as return value to save chars
+
+int t, WordScore(auto w) {
+    for(c : w)
+        t = t - c + 96;
+    t = -t;
+}
