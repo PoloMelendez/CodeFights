@@ -1,0 +1,11 @@
+//For every vowel in input, replace with vowel p vowel
+//Ex:   input:  abbec
+//      output: apabbepec
+
+auto BirdsLanguage(auto w) {
+    std::string v = "aeiouAEIOU";
+    std::stringstream s;
+    for(c : w)
+        v.find(c) < 99 ? s << c << "p" << c : s << c;  
+    return s.str();
+}
