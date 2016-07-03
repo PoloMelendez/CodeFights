@@ -1,0 +1,9 @@
+// n = total number of cups, f = number of cups that can be flipped per turn
+//once flipped, a cup cannot be turned back over
+//how many turns to flip all cups?
+//return -1 if impossible
+
+auto FlipCup(auto n, auto f) {
+    long a = std::stol(n), b = std::stol(f);
+    return a % b ? "-1" : std::to_string(a / b);
+}
