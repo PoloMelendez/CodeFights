@@ -1,0 +1,10 @@
+//s is the size of the file to be stored, can be split among different usb sticks
+//u is a vector of the usb sticks available, and their sizes
+//find the minimum number of sticks needed to store the entire file
+
+int n, t=0, usbAndFile(int s, auto u) {
+    std::sort(u.rbegin(), u.rend());
+    for(n=0; t < s; n++)
+        t += u[n];
+    return n;
+}
