@@ -8,7 +8,7 @@ std::vector<int> o, NarcissisticNumber(int s, int f) {
     for(s; s <= f; s++) {
         int t = 0, k;
         for(k=s; k > 0;) {            
-            t += pow(k%10, (int)(log10(s)+ 1));
+            t += pow(k%10, (int)log10(s)+ 1);
             k /= 10;
         }
         if(t == s) 
