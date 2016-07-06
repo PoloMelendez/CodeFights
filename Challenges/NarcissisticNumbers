@@ -1,0 +1,18 @@
+// Narcissistic numbers are defined as numbers where the sum of digits, 
+// all raised to the total number of digits in the number,
+// is equal to the number itself
+//ex: 153 --> 1^3 + 5^3 + 3^3
+//given a start and a finish, return a vector of all narcissistic numbers in the range
+
+std::vector<int> o, NarcissisticNumber(int s, int f) {
+    for(s; s <= f; s++) {
+        int t = 0, k;
+        for(k=s; k > 0;) {            
+            t += pow(k%10, (int)(log10(s)+ 1));
+            k /= 10;
+        }
+        if(t == s) 
+            o.push_back(t);
+    }
+    return o;
+}
