@@ -1,0 +1,21 @@
+//find the number of combinations who's product is even
+//given an array of integers
+//ex: [1, 2, 3, 4]
+//ans: 5            1 * 2, 1 * 4, 2 * 3, 2 * 4, 3 * 4
+
+int c, i, j, k, helptoclone(auto A) {
+    k = A.size();
+    for(i : k)
+        for(j=i+1; j < k; j++)
+            A[i] * A[j] % 2 ? c : c++;
+    return c;
+}
+
+
+//Better version using bit manipulation
+int d, helptoclone(auto A) {
+    for(u : A) 
+        d += ~u&1;
+    
+    d *= A.size() + .5*~d;
+}
