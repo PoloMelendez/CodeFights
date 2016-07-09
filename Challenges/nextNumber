@@ -1,0 +1,14 @@
+//find the smallest number greater than N that has the same
+//number of active bits as N
+
+//Version I submitted
+int n, i, nextNumber(int N) {
+    n = N & -N;
+    i = N + n;
+    return (((i ^ N) >> 2) / n) | i;
+}
+
+//top version
+int r, nextNumber(int N) {
+    return N + (r = N & -N) | (N ^ N + r)/r/4;
+}
