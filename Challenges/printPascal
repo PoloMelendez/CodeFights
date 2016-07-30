@@ -1,0 +1,8 @@
+//Given a row number, return the vector equivalent of that row of pascal's triangle
+
+auto pascal_list(int n) {
+    std::vector<int> r(n);
+    for(int i; i<n;)
+        r[i++]=r[--n]=i;
+    return r;
+}
