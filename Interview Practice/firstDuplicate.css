@@ -1,0 +1,24 @@
+//Given an array a that contains only numbers in the range from 1 to a.length, 
+//find the first duplicate number for which the second occurrence has the minimal index. 
+//In other words, if there are more than 1 duplicated numbers, 
+//return the number for which the second occurrence has a smaller index than the second occurrence of the other number does. 
+//If there are no such elements, return -1.
+
+int firstDuplicate(int[] a) {
+    int minIndex = a.Length;
+    for(int i=0; i<a.Length; i++) {
+        int curr = Math.Abs(a[i]);
+        if(a[curr - 1] < 0) {    //Index is flagged and shows duplicate
+            if(i < minIndex) {    //New duplicate has lesser index
+                minIndex = i;
+            }
+        } else {    //Flag index by negating value
+            if(a[curr - 1] > 0) 
+                a[curr - 1] *= -1;
+        }
+    }
+    if(minIndex == a.Length)    //No duplicates found
+        return -1;
+    else
+        return Math.Abs(a[minIndex]);    //Value of the lowest index duplicate
+}
