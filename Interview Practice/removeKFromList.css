@@ -1,0 +1,31 @@
+//Note: Try to solve this task in O(n) time using O(1) additional space, 
+//where n is the number of elements in the list, since this is what you'll be asked to do during an interview.
+
+//Given a singly linked list of integers l and an integer k, remove all elements from list l that have a value equal to k.
+
+// Definition for singly-linked list:
+// class ListNode<T> {
+//   public T value { get; set; }
+//   public ListNode<T> next { get; set; }
+// }
+//
+ListNode<int> removeKFromList(ListNode<int> l, int k) {
+    if(l == null)    //empty list
+        return null;
+    ListNode<int> tmp = l;
+    ListNode<int> prev = null;
+    while(tmp != null && tmp.value == k) {    //check if head matches value, repeat
+        l = l.next;
+        tmp = l;
+    }
+    while(tmp != null) {
+        while(tmp != null && tmp.value != k) {    //if value found, unlink node
+            prev = tmp;
+            tmp = tmp.next;
+        }
+        if(tmp == null) return l;
+        prev.next = tmp.next;
+        tmp = prev.next;
+    }
+    return l;
+}
