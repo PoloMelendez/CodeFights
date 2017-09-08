@@ -1,0 +1,63 @@
+//Note: Try to solve this task in O(n) time using O(1) additional space, where n is the number of elements in l, since this is what you'll be asked to do during an interview.
+
+//Given a singly linked list of integers, determine whether or not it's a palindrome.
+
+// Definition for singly-linked list:
+// class ListNode<T> {
+//   public T value { get; set; }
+//   public ListNode<T> next { get; set; }
+// }
+//
+bool isListPalindrome(ListNode<int> l) {
+    if(l == null)
+        return true;
+    ListNode<int> slow = l, slowPrev = l, fast = l, middle = null;
+    while(fast != null && fast.next != null) {    //iterate to middle and end of the list
+        fast = fast.next.next;
+        slowPrev = slow;
+        slow = slow.next;
+    }
+    if(fast != null) {    //if odd length, omit middle number
+        slow = slow.next;
+        if(slow == null)
+            return true;
+    }
+    slowPrev.next = null;
+    slow = reverseList(ref slow);    //reverse the second half of the list
+    return compareLists(l, slow);    //compare the two halves
+}
+
+ListNode<int> reverseList(ref ListNode<int> l) {
+    ListNode<int> curr = l, next, prev = null;
+    while(curr != null) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    l = prev;
+    return l;
+}
+
+bool compareLists(ListNode<int> l, ListNode<int> r) {
+    while(l != null && r != null) {
+        if(l.value == r.value) {
+            l = l.next;
+            r = r.next;
+        } else {
+            return false;
+        }
+    }
+        if(l == null && r == null)
+            return true;
+    return false;
+}
+
+void printList(ListNode<int> l) {
+    ListNode<int> tmp = l;
+    while(tmp != null) {
+        Console.Write(tmp.value + " ");
+        tmp = tmp.next;
+    }
+    Console.WriteLine();
+}
